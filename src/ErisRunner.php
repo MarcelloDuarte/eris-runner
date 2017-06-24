@@ -167,15 +167,14 @@ namespace {
      * @param \Eris\Generator[] ...$generators
      * @return \Eris\Quantifier\ForAll
      */
-    function forAll()
+    function forAll(\Eris\Generator ...$generators)
     {
         return (new ErisRunner\ForAllAdapter)
-            ->runForAll(...func_get_args());
+            ->runForAll(...$generators);
     }
 
     function property(string $description, callable $property)
     {
-
         try {
             $property();
             ErisRunner\World::add(Success(new ErisRunner\Property($description)));
