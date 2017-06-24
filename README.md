@@ -10,7 +10,7 @@ All you need is a directory or a file with properties written like this:
 ```php
 
 property ("strings have the same length in reverse", function() {
-    forAll(Gen::string())->then(function ($s) {
+    forAll (Gen::string()) (function ($s) {
         Assert::same(strlen($s), strlen(strrev($s)));
     });
 });

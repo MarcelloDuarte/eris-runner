@@ -1,6 +1,8 @@
 <?php
 
 namespace ErisRunner {
+
+    use Eris\TestTrait;
     use Phunkie\Types\ImmList;
     use Phunkie\Validation\Validation;
     use Phunkie\Cats\IO;
@@ -13,7 +15,7 @@ namespace ErisRunner {
 
     final class ForAllAdapter
     {
-        use \Eris\TestTrait;
+        use TestTrait;
 
         public function runForAll()
         {
@@ -35,8 +37,9 @@ namespace ErisRunner {
 
         public static function flush()
         {
-            return self::$world ? self::$world : Nil();
+            $world = self::$world ? self::$world : Nil();
             self::$world = Nil();
+            return $world;
         }
     }
 
