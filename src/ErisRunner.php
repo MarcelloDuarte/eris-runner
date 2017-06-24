@@ -177,9 +177,28 @@ namespace {
     }
 
     /**
-     * @method static \Eris\Generator associative(array $generators)
-     * @method static \Eris\Generator bind(Generator $inner, callable $outerFactory)
-     * @method static \Eris\Generator choose()
+     * @method static \Eris\Generator associativeArray(array $generators)
+     * @method static \Eris\Generator bind($innerGenerator, $outerGeneratorFactory)
+     * @method static \Eris\Generator boolean()
+     * @method static \Eris\Generator character($lowerLimit, $upperLimit)
+     * @method static \Eris\Generator choose($x, $y)
+     * @method static \Eris\Generator constant($value)
+     * @method static \Eris\Generator date(DateTime $lowerLimit, DateTime $upperLimit)
+     * @method static \Eris\Generator elements($domain)
+     * @method static \Eris\Generator float()
+     * @method static \Eris\Generator frequency(array $generatorsWithFrequency)
+     * @method static \Eris\Generator integer(callable $mapFn)
+     * @method static \Eris\Generator map(callable $map, $generator)
+     * @method static \Eris\Generator names(array $list)
+     * @method static \Eris\Generator oneOf($generators)
+     * @method static \Eris\Generator regex($expression)
+     * @method static \Eris\Generator sequence(Eris\Generator $singleElementGenerator)
+     * @method static \Eris\Generator set(Eris\Generator $singleElementGenerator)
+     * @method static \Eris\Generator string()
+     * @method static \Eris\Generator subset(array $universe)
+     * @method static \Eris\Generator suchThat($filter, $generator, $maximumAttempts)
+     * @method static \Eris\Generator tuple(array $generators)
+     * @method static \Eris\Generator vector($size, Eris\Generator $generator)
      */
     class Gen
     {
