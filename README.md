@@ -23,7 +23,7 @@ property ("positive integers squared are always bigger than themselves", functio
         ->when (function($x) { return $x > 0; })
         ->then (function ($x) {
 
-        // Should failed! Did you think about 1? ;-)
+        // Should fail! Did you think about 1? ;-)
         Assert::greaterThan($x * $x, $x);
     });
 });

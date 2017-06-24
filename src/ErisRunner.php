@@ -48,7 +48,7 @@ namespace ErisRunner {
     {
         public static function main(array $argv, int $argc)
         {
-            $testDirectory = $argv[count($argv) - 1];
+            $testDirectory = $argv[$argc - 1];
 
             if (!is_file($testDirectory) && !is_dir($testDirectory)) {
                 self::showUsage();
