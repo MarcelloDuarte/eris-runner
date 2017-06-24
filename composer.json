@@ -1,0 +1,17 @@
+{
+    "require": {
+        "phunkie/phunkie": "^0.8",
+        "giorgiosironi/eris": "~0.7"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+    	"psr-0": {
+    	    "": "src"
+    	},
+    	"files": [
+    		"src/ErisRunner.php"
+    	]
+    }
+}
