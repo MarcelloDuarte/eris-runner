@@ -64,7 +64,7 @@ namespace ErisRunner {
 
         private static function showUsage()
         {
-            exit ("usage: phunkie-check directory|file\n");
+            exit ("usage: eris directory|file\n");
         }
 
         private static function unsafelyPerform(IO $io)
