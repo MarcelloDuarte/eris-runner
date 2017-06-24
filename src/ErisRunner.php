@@ -3,6 +3,7 @@
 namespace ErisRunner {
 
     use Eris\TestTrait;
+    use Phunkie\Types\Function1;
     use Phunkie\Types\ImmList;
     use Phunkie\Validation\Validation;
     use Phunkie\Cats\IO;
@@ -103,18 +104,18 @@ namespace ErisRunner {
             $this->properties = $properties;
         }
 
-        public function getProperties()
+        public function getProperties(): ImmList
         {
             return $this->properties;
         }
 
-        public function __toString()
+        public function __toString(): string
         {
             return "Result({$this->testFile}, " . $this->properties->show() . ")";
         }
     }
 
-    function loadFiles()
+    function loadFiles(): Function1
     {
         $recursiveDirIterator = function($dir) {
             $rdi = new \RecursiveDirectoryIterator($dir);
@@ -128,7 +129,7 @@ namespace ErisRunner {
         });
     }
 
-    function runTests()
+    function runTests(): Function1
     {
         return Function1(function(ImmList $testFiles) {
             return $testFiles->map(function($testFile) {
@@ -138,13 +139,13 @@ namespace ErisRunner {
         });
     }
 
-    function printResults()
+    function printResults(): Function1
     {   
         return Function1(function(ImmList $results): IO {
             
             return io (function() use ($results) {
                 $_ = underscore();
-                $errors = $results->map($_->properties)->map(function($properties) {
+                $errors = $results->map($_->properties)->map(function(ImmList $properties) {
                     return $properties->map(function($property) { $on = match($property); switch(true) {
                         case $on(Valid($p)) : echo "."; return None(); break;
                         case $on(Invalid($e)) : echo "F"; return Some($e); break;
@@ -194,7 +195,7 @@ namespace {
      * @method static \Eris\Generator elements($domain)
      * @method static \Eris\Generator float()
      * @method static \Eris\Generator frequency(array $generatorsWithFrequency)
-     * @method static \Eris\Generator integer(callable $mapFn)
+     * @method static \Eris\Generator integer(callable $mapFn = null)
      * @method static \Eris\Generator map(callable $map, $generator)
      * @method static \Eris\Generator names(array $list)
      * @method static \Eris\Generator oneOf($generators)
@@ -203,7 +204,7 @@ namespace {
      * @method static \Eris\Generator set(Eris\Generator $singleElementGenerator)
      * @method static \Eris\Generator string()
      * @method static \Eris\Generator subset(array $universe)
-     * @method static \Eris\Generator suchThat($filter, $generator, $maximumAttempts)
+     * @method static \Eris\Generator suchThat($filter, $generator, $maximumAttempts = null)
      * @method static \Eris\Generator tuple(array $generators)
      * @method static \Eris\Generator vector($size, Eris\Generator $generator)
      */

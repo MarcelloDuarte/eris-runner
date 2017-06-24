@@ -9,9 +9,22 @@ All you need is a directory or a file with properties written like this:
 
 ```php
 
+<?php
+
 property ("strings have the same length in reverse", function() {
     forAll (Gen::string()) (function ($s) {
         Assert::same(strlen($s), strlen(strrev($s)));
+    });
+});
+
+property ("positive integers squared are always bigger than themselves", function() {
+    forAll (Gen::integer())
+        // ok zero * zero is still zero
+        ->when (function($x) { return $x > 0; })
+        ->then (function ($x) {
+
+        // Should failed! Did you think about 1? ;-)
+        Assert::greaterThan($x * $x, $x);
     });
 });
 
