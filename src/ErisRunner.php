@@ -46,7 +46,7 @@ namespace ErisRunner {
         {
             $testDirectory = $argv[count($argv) - 1];
 
-            if (!is_file($testDirectory)) {
+            if (!is_file($testDirectory) && !is_dir($testDirectory)) {
                 self::showUsage();
             }
 
@@ -159,6 +159,10 @@ namespace ErisRunner {
 }
 
 namespace {
+    /**
+     * @param \Eris\Generator[] ...$generators
+     * @return \Eris\Quantifier\ForAll
+     */
     function forAll()
     {
         return (new ErisRunner\ForAllAdapter)
