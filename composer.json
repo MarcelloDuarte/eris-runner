@@ -6,12 +6,13 @@
     "config": {
         "bin-dir": "bin"
     },
+    "bin": ["bin/eris"],
     "autoload": {
-    	"psr-0": {
-    	    "": "src"
-    	},
-    	"files": [
-    		"src/ErisRunner.php"
-    	]
+        "psr-0": {
+            "": "src"
+        },
+        "files": [
+            "src/ErisRunner.php"
+        ]
     }
 }
