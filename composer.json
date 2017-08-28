@@ -1,4 +1,5 @@
 {
+    "name": "md/eris-runner",
     "require": {
         "phunkie/phunkie": "^0.8",
         "giorgiosironi/eris": "~0.7"
